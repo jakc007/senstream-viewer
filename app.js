@@ -175,7 +175,7 @@ function render() {
   const devices=[...new Set(current.channels.map(c=>c.device))];
   const peaks=/Peaks|PeaksAndValleys/.test(signal);
   const traces=channels.map(c=>({
-    x:c.x,y:c.y,name:c.device,type:'scattergl',mode:peaks?'markers':'lines',
+    x:c.x,y:c.y,name:c.device,type:'scattergl',mode:peaks||c.x.length===1?'markers':'lines',
     line:{color:colors[devices.indexOf(c.device)%colors.length],width:1.4},
     marker:{size:5,color:colors[devices.indexOf(c.device)%colors.length]},
     hovertemplate:'%{x:.4f} s<br>%{y:.6g}<extra>%{fullData.name}</extra>'
