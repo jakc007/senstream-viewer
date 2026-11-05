@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="sl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Senstream | Pregled meritev</title>
+<link rel="stylesheet" href="style.css">
+<script defer src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+<script defer src="https://cdn.plot.ly/plotly-3.3.0.min.js"></script>
+<script defer src="app.js"></script></head>
+<body>
+<header><a class="brand" href="./"><span class="logo">∿</span> Senstream <span class="muted">/ pregled meritev</span></a><button id="help">Kako deluje?</button></header>
+<main>
+<section id="welcome">
+<div class="eyebrow">OD POSNETKA DO GRAFA</div><h1>Tvoje meritve.<br>Na enem mestu.</h1>
+<p class="intro">Odpri posnetek s prstana Senstream. Razišči signale, primerjaj prstane in poišči dogodke v času.</p>
+<div id="dropzone" tabindex="0" role="button" aria-label="Izberi posnetke Senstream"><span class="upload">↥</span><h2>Povleci posnetek sem</h2><p>ali klikni in izberi datoteko <strong>.senstream</strong></p><span class="primary">Izberi datoteko</span><small>Izbereš lahko tudi več posnetkov hkrati.</small></div>
+<p class="privacy">⌁ Datoteke se obdelajo v tvojem brskalniku. Meritve ostanejo na tvoji napravi.</p>
+</section>
+<input type="file" id="files" accept=".senstream,.zip" multiple hidden>
+<div id="status" role="status" aria-live="polite"></div><div id="error" role="alert" hidden></div>
+<section id="workspace" hidden>
+<div class="sessionbar"><div><span class="eyebrow">POSNETEK</span><select id="sessions" aria-label="Izberi posnetek"></select></div><button id="add" class="primary">+ Odpri posnetek</button></div>
+<div id="metadata" class="metadata"></div>
+<div class="layout">
+<aside><h2>Signali</h2><nav id="signals" aria-label="Izberi signal"></nav><h2>Prstani in naprave</h2><div id="devices"></div><label class="toggle"><input type="checkbox" id="showmarkers" checked> Pokaži markerje</label><button id="markersnav">Dogodki in markerji <span id="markercount"></span></button></aside>
+<article><div class="chartheading"><div><div class="eyebrow" id="signalcode"></div><h2 id="charttitle"></h2></div><button id="reset">Celoten posnetek ↺</button></div>
+<div id="charttools"><button id="zoom" aria-pressed="true">Povečava</button><button id="pan" aria-pressed="false">Premikanje</button><button id="png">Shrani sliko</button><button id="csv">Izvozi CSV</button></div>
+<p class="hint">Povleci pravokotnik za povečavo · kolešček za približevanje · dvoklik za celoten prikaz · klik na legendo skrije prstan</p>
+<div id="chart"></div><div id="emptychart" hidden>Izberi vsaj eno napravo za prikaz signala.</div>
+<div class="timewindow"><label>Od (s) <input id="from" type="number" step="any"></label><label>Do (s) <input id="to" type="number" step="any"></label><button id="apply">Prikaži interval</button></div><p id="signalnote" class="hint"></p>
+<section id="markerpanel"><div class="chartheading"><h2>Dogodki in markerji</h2><span id="markerinfo"></span></div><div id="markertable"></div></section>
+</article></div>
+</section>
+</main>
+<footer>Senstream Viewer <span>Odpri. Povečaj. Razišči.</span></footer>
+<dialog id="instructions"><h2>Od iPada do grafov</h2><ol><li>Na iPadu izvozi posnetek Senstream in ga pošlji na računalnik.</li><li>Tukaj izberi datoteko s končnico .senstream.</li><li>Levo izberi signal. Prstane vključi ali izključi s kljukicami.</li><li>Povleci po grafu za povečavo ali uporabi kolešček. Gumb »Celoten posnetek« povrne prikaz.</li><li>Marker iz seznama te premakne na čas dogodka. Gumb »Shrani sliko« prenese graf.</li></ol><p>Čas je prikazan v sekundah od začetka posnetka. Grafi prikazujejo vrednosti, shranjene v datoteki. Oznake naprav so prebrane iz posnetka.</p><button id="closehelp" class="primary">Razumem</button></dialog>
+</body></html>
+
